@@ -70,21 +70,23 @@ namespace Day02_MVC.Controllers
 
         // SaveEdit
         [HttpPost]
-        public IActionResult SaveEdit(Student studentSent, int id)
+        public IActionResult SaveEdit(StudentWithDeptListViewModel studentSent, int id)
         {
             //if (studentSent.Name != null)
             if(ModelState.IsValid)
             {
                 // Get old student
                 Student oldStudent = studentBL.GetById(id);
+                List<Department> DeptList = departmentBL.GetAll();
 
                 // Update locally
                 oldStudent.Name = studentSent.Name;
                 oldStudent.Age = studentSent.Age;
                 oldStudent.DepartmentId = studentSent.DepartmentId;
+                DeptList = studentSent.Departments;
 
                 // Update to DB
-                studentBL.EditStudent(oldStudent);
+                studentBL.update();
 
                 return RedirectToAction(nameof(ShowAll));
             }
@@ -95,7 +97,7 @@ namespace Day02_MVC.Controllers
             studentVM.DepartmentId = studentSent.DepartmentId;
             studentVM.Departments = departmentBL.GetAll();
 
-            //return View("Edit", studentSent);
+            return View("Edit", studentSent);
             return View("Edit", studentVM);
         }
 

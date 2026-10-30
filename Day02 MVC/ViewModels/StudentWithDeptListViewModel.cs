@@ -8,7 +8,7 @@ namespace Day02_MVC.ViewModels
         public int Id { get; set; }
 
         //[Display(Name = "Student Name")]
-        //[Required(ErrorMessage = "name is required")]
+        [Required(ErrorMessage = "name is required")]
         //[RegularExpression(@"^[a-zA-Z1-9\s#]+$", ErrorMessage = "Only letters,numbers,spaces and # are allowed")]
         public string Name {  get; set; }
 

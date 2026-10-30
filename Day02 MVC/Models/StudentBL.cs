@@ -28,6 +28,11 @@ namespace Day02_MVC.Models
             context.SaveChanges();
         }
 
+        public void update()
+        {
+            context.SaveChanges();
+        }
+
         public void DeleteStudent(Student stu)
         {
             //delete from local
