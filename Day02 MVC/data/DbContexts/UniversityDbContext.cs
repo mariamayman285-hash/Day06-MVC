@@ -5,6 +5,14 @@ namespace Day02_MVC.data.DbContexts
 {
     public class UniversityDbContext : DbContext
     {
+        public UniversityDbContext(DbContextOptions<UniversityDbContext> options) :base(options)  //???
+        {
+        }
+
+        public UniversityDbContext()
+        {
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Initial Catalog=University;Integrated Security=True;Encrypt=False;Trust Server Certificate=True");

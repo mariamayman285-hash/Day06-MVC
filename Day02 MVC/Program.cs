@@ -1,3 +1,5 @@
+using Day02_MVC.data.DbContexts;
+using Microsoft.EntityFrameworkCore;
 namespace Day02_MVC
 {
     public class Program
@@ -5,6 +7,9 @@ namespace Day02_MVC
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var connectionString = builder.Configuration.GetConnectionString("UniversityDbContext") ?? throw new InvalidOperationException("Connection string 'UniversityDbContext' not found.");
+
+            builder.Services.AddDbContext<UniversityDbContext>(options => options.UseSqlServer(connectionString));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

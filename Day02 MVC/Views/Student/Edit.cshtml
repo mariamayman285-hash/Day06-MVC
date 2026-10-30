@@ -18,7 +18,7 @@
 
     <div>
         <label>Department</label>
-        <select id="DepartmentId" name="DepartmentId" class="form-control">
+        @* <select id="DepartmentId" name="DepartmentId" class="form-control">
             @foreach (var item in Model.Departments)
             {
                 if (item.Id == Model.DepartmentId)
@@ -30,12 +30,12 @@
                     <option value="@item.Id">@item.Name</option>
                 }
             }
-        </select>
-        @* <select asp-for="DepartmentId" class="form-control" asp-items="@(new SelectList(Model.Departments, "Id", "Name"))">
+        </select> *@
+        <select asp-for="DepartmentId" class="form-control" asp-items="@(new SelectList(Model.Departments, "Id", "Name" ))">
         <option value="0">-- Select Department --</option>
         </select>
 
-        <span asp-validation-for="DepartmentId" class="text-danger"></span> *@
+        <span asp-validation-for="DepartmentId" class="text-danger"></span>
     </div>
 
     <input type="submit" value="Save Changes" class="btn btn-success mt-3" />
